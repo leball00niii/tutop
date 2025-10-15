@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel CSS - Leçons Complètes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            background: #2d2d44;
+            padding: 15px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-title {
+            color: #ff6b6b;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .home-view {
+            display: block;
+        }
+
+        header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #b0b0b0;
+            font-size: 1.1em;
+        }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .lesson-card {
+            background: #2d2d44;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .lesson-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .lesson-title {
+            font-size: 1.3em;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .lesson-description {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .start-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .start-button:hover {
+            background: linear-gradient(135deg, #ee5a6f 0%, #d93d4a 100%);
+        }
+
+        .lesson-view {
+            display: none;
+        }
+
+        .lesson-content {
+            background: #2d2d44;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .lesson-header {
+            border-bottom: 3px solid #ff6b6b;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .lesson-header h2 {
+            color: #ff6b6b;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .lesson-intro {
+            color: #b0b0b0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin: 30px 0;
+        }
+
+        .section h3 {
+            color: #ff6b6b;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #d0d0d0;
+        }
+
+        .code-block {
+            background: #1a1a2e;
+            border: 1px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            color: #4caf50;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid #ff6b6b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .example-title {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .demo-box {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .tips-box {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .tips-title {
+            color: #4caf50;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .warning-box {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-title {
+            color: #ff9800;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .exercise {
+            background: #353552;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .exercise-header {
+            color: #ff6b6b;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .exercise-task {
+            background: #2d2d44;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .task-number {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .prev-button {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+        }
+
+        .prev-button:hover {
+            background: rgba(255, 107, 107, 0.3);
+        }
+
+        .next-button {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+        }
+
+        .next-button:hover {
+            background: linear-gradient(135deg, #ee5a6f 0%, #d93d4a 100%);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        ul li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        ul li:before {
+            content: "→";
+            color: #ff6b6b;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .lesson-content {
+                padding: 20px;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="nav-title">🎨 Tutoriel CSS</div>
+            <button class="back-btn" onclick="goHome()" id="backBtn" style="display: none;">← Retour aux leçons</button>
+        </div>
+
+        <!-- Vue Accueil -->
+        <div id="homeView" class="home-view">
+            <header>
+                <h1>Tutoriel CSS</h1>
+                <p class="subtitle">Donnez du style à vos pages web</p>
+            </header>
+
+            <div class="lessons-grid">
+                <div class="lesson-card" onclick="showLesson(1)">
+                    <div class="card-header">
+                        <div class="lesson-number">1</div>
+                        <div class="lesson-title">Introduction au CSS</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Découvrez le CSS et apprenez comment styliser vos pages HTML.
+                        </p>
+                        <button class="start-button" onclick="showLesson(1); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(2)">
+                    <div class="card-header">
+                        <div class="lesson-number">2</div>
+                        <div class="lesson-title">Sélecteurs CSS</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Maîtrisez les différents types de sélecteurs pour cibler vos éléments.
+                        </p>
+                        <button class="start-button" onclick="showLesson(2); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(3)">
+                    <div class="card-header">
+                        <div class="lesson-number">3</div>
+                        <div class="lesson-title">Couleurs & Texte</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Apprenez à utiliser les couleurs et à styliser le texte.
+                        </p>
+                        <button class="start-button" onclick="showLesson(3); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(4)">
+                    <div class="card-header">
+                        <div class="lesson-number">4</div>
+                        <div class="lesson-title">Box Model</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Comprenez le modèle de boîte : marges, bordures et padding.
+                        </p>
+                        <button class="start-button" onclick="showLesson(4); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(5)">
+                    <div class="card-header">
+                        <div class="lesson-number">5</div>
+                        <div class="lesson-title">Positionnement</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Positionnez vos éléments avec static, relative, absolute et fixed.
+                        </p>
+                        <button class="start-button" onclick="showLesson(5); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(6)">
+                    <div class="card-header">
+                        <div class="lesson-number">6</div>
+                        <div class="lesson-title">Flexbox</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Créez des mises en page flexibles et responsives facilement.
+                        </p>
+                        <button class="start-button" onclick="showLesson(6); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leçon 1 : Introduction au CSS -->
+        <div id="lesson1" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 1 : Introduction au CSS</h2>
+                    <p class="lesson-intro">Découvrez le CSS (Cascading Style Sheets) et comment l'utiliser pour donner du style à vos pages HTML.</p>
+                </div>
+
+                <div class="section">
+                    <h3>🎨 Qu'est-ce que le CSS ?</h3>
+                    <p>CSS signifie <strong>Cascading Style Sheets</strong> (Feuilles de Style en Cascade). Le CSS permet de définir l'apparence visuelle de vos pages web : couleurs, polices, espacements, positionnement, animations, etc.</p>
+                    <p>Si le HTML est le squelette d'une maison, le CSS en est la décoration : peinture, meubles, disposition, etc.</p>
+                </div>
+
+                <div class="section">
+                    <h3>📝 Les trois façons d'utiliser le CSS</h3>
+                    
+                    <div class="example-box">
+                        <div class="example-title">1. CSS Inline (dans l'élément HTML)</div>
+                        <div class="code-block">
+<pre>&lt;p style="color: red; font-size: 20px;"&gt;Texte rouge&lt;/p&gt;</pre>
+                        </div>
+                        <p>❌ Non recommandé : difficile à maintenir</p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">2. CSS Interne (dans la balise &lt;style&gt;)</div>
+                        <div class="code-block">
+<pre>&lt;head&gt;
+    &lt;style&gt;
+        p {
+            color: red;
+            font-size: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</pre>
+                        </div>
+                        <p>✅ Bon pour les petits projets</p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">3. CSS Externe (fichier séparé)</div>
+                        <div class="code-block">
+<pre>&lt;head&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</pre>
+                        </div>
+                        <p>✅✅ Recommandé : meilleure organisation et réutilisabilité</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🔧 Syntaxe de base du CSS</h3>
+                    <div class="code-block">
+<pre>sélecteur {
+    propriété: valeur;
+    propriété2: valeur2;
+}</pre>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Exemple concret :</div>
+                        <div class="code-block">
+<pre>h1 {
+    color: blue;
+    font-size: 32px;
+    text-align: center;
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <div class="tips-title">✅ Bonnes pratiques :</div>
+                    <ul>
+                        <li>Utilisez des fichiers CSS externes pour les projets</li>
+                        <li>Organisez votre code CSS de manière logique</li>
+                        <li>Utilisez l'indentation pour la lisibilité</li>
+                        <li>Commentez votre code : /* Ceci est un commentaire */</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices Pratiques</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez un fichier HTML et ajoutez du CSS interne pour changer la couleur d'un titre en rouge.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Créez un fichier style.css externe et liez-le à votre page HTML.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 3 :</div>
+                        <p>Stylisez tous les paragraphes pour qu'ils soient en bleu avec une taille de 18px.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="goHome()">← Retour</button>
+                <button class="next-button nav-button" onclick="showLesson(2)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 2 : Sélecteurs CSS -->
+        <div id="lesson2" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 2 : Sélecteurs CSS</h2>
+                    <p class="lesson-intro">Apprenez à cibler précisément les éléments HTML que vous souhaitez styliser.</p>
+                </div>
+
+                <div class="section">
+                    <h3>🎯 Sélecteur d'élément</h3>
+                    <p>Cible tous les éléments d'un certain type.</p>
+                    <div class="code-block">
+<pre>p {
+    color: green;
+}
+
+h1 {
+    font-size: 36px;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🏷️ Sélecteur de classe (.)</h3>
+                    <p>Cible les éléments avec une classe spécifique.</p>
+                    <div class="code-block">
+<pre>/* HTML */
+&lt;p class="important"&gt;Texte important&lt;/p&gt;
+
+/* CSS */
+.important {
+    color: red;
+    font-weight: bold;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🆔 Sélecteur d'ID (#)</h3>
+                    <p>Cible un élément unique avec un ID spécifique.</p>
+                    <div class="code-block">
+<pre>/* HTML */
+&lt;div id="header"&gt;En-tête&lt;/div&gt;
+
+/* CSS */
+#header {
+    background-color: navy;
+    color: white;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🌟 Sélecteur universel (*)</h3>
+                    <div class="code-block">
+<pre>* {
+    margin: 0;
+    padding: 0;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>👨‍👩‍👧 Sélecteurs combinés</h3>
+                    <div class="code-block">
+<pre>/* Descendant : tous les p dans div */
+div p {
+    color: blue;
+}
+
+/* Enfant direct */
+div > p {
+    color: red;
+}
+
+/* Plusieurs classes */
+.important.urgent {
+    background: yellow;
+}
+
+/* Groupement */
+h1, h2, h3 {
+    font-family: Arial;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <div class="tips-title">✅ Priorité des sélecteurs :</div>
+                    <ul>
+                        <li>ID (#) : Priorité la plus haute</li>
+                        <li>Classe (.) : Priorité moyenne</li>
+                        <li>Élément : Priorité la plus basse</li>
+                        <li>!important : Force la priorité (à utiliser rarement)</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices Pratiques</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez une classe "highlight" qui met le texte en jaune avec fond noir.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Stylisez tous les liens (a) en bleu et sans soulignement.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 3 :</div>
+                        <p>Créez un ID "footer" avec un fond gris et texte centré.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(1)">← Précédent</button>
+                <button class="next-button nav-button" onclick="showLesson(3)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 3 : Couleurs & Texte -->
+        <div id="lesson3" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 3 : Couleurs & Texte</h2>
+                    <p class="lesson-intro">Apprenez à utiliser les couleurs et à styliser le texte pour rendre vos pages attractives.</p>
+                </div>
+
+                <div class="section">
+                    <h3>🎨 Les couleurs en CSS</h3>
+                    <div class="code-block">
+<pre>/* Noms de couleurs */
+color: red;
+background-color: blue;
+
+/* Hexadécimal */
+color: #ff0000;
+background-color: #3498db;
+
+/* RGB */
+color: rgb(255, 0, 0);
+background-color: rgb(52, 152, 219);
+
+/* RGBA (avec transparence) */
+color: rgba(255, 0, 0, 0.5);
+background-color: rgba(0, 0, 0, 0.8);
+
+/* HSL */
+color: hsl(0, 100%, 50%);</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>✏️ Propriétés du texte</h3>
+                    <div class="code-block">
+<pre>/* Police */
+font-family: Arial, sans-serif;
+font-size: 16px;
+font-weight: bold; /* ou 100-900 */
+font-style: italic;
+
+/* Alignement */
+text-align: center; /* left, right, justify */
+text-decoration: underline; /* none, overline, line-through */
+text-transform: uppercase; /* lowercase, capitalize */
+
+/* Espacement */
+line-height: 1.6;
+letter-spacing: 2px;
+word-spacing: 5px;
+
+/* Ombre */
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);</pre>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Exemple complet :</div>
+                        <div class="code-block">
+<pre>h1 {
+    color: #2c3e50;
+    font-family: 'Arial', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🌈 Dégradés (Gradients)</h3>
+                    <div class="code-block">
+<pre>/* Dégradé linéaire */
+background: linear-gradient(to right, red, blue);
+background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+
+/* Dégradé radial */
+background: radial-gradient(circle, red, blue);</pre>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <div class="tips-title">✅ Conseils couleurs :</div>
+                    <ul>
+                        <li>Utilisez une palette de couleurs cohérente</li>
+                        <li>Vérifiez le contraste pour la lisibilité</li>
+                        <li>RGB avec alpha pour la transparence</li>
+                        <li>Outils : Adobe Color, Coolors</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices Pratiques</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez un titre avec une couleur personnalisée en hexadécimal, centré et en gras.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Stylisez un paragraphe avec police Arial, taille 18px, interligne 1.8 et couleur grise.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 3 :</div>
+                        <p>Créez une div avec un fond en dégradé de deux couleurs de votre choix.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(2)">← Précédent</button>
+                <button class="next-button nav-button" onclick="showLesson(4)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 4 : Box Model -->
+        <div id="lesson4" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 4 : Le Box Model (Modèle de boîte)</h2>
+                    <p class="lesson-intro">Comprenez comment fonctionne le modèle de boîte CSS, élément fondamental de la mise en page.</p>
+                </div>
+
+                <div class="section">
+                    <h3>📦 Qu'est-ce que le Box Model ?</h3>
+                    <p>Chaque élément HTML est une boîte rectangulaire composée de 4 parties :</p>
+                    <ul>
+                        <li><strong>Content</strong> : Le contenu (texte, image, etc.)</li>
+                        <li><strong>Padding</strong> : Espace entre le contenu et la bordure</li>
+                        <li><strong>Border</strong> : La bordure autour du padding</li>
+                        <li><strong>Margin</strong> : Espace extérieur, entre l'élément et les autres</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3>📏 Margin (Marge externe)</h3>
+                    <div class="code-block">
+<pre>/* Toutes les marges */
+margin: 20px;
+
+/* Marges individuelles */
+margin-top: 10px;
+margin-right: 15px;
+margin-bottom: 10px;
+margin-left: 15px;
+
+/* Raccourci (haut, droite, bas, gauche) */
+margin: 10px 20px 10px 20px;
+
+/* Haut/bas et gauche/droite */
+margin: 10px 20px;
+
+/* Centrer un élément */
+margin: 0 auto;</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🛡️ Padding (Marge interne)</h3>
+                    <div class="code-block">
+<pre>/* Tout le padding */
+padding: 20px;
+
+/* Paddings individuels */
+padding-top: 10px;
+padding-right: 15px;
+padding-bottom: 10px;
+padding-left: 15px;
+
+/* Raccourci */
+padding: 10px 20px;</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🖼️ Border (Bordure)</h3>
+                    <div class="code-block">
+<pre>/* Bordure complète */
+border: 2px solid black;
+
+/* Bordures individuelles */
+border-top: 1px dashed red;
+border-right: 3px dotted blue;
+border-bottom: 2px solid green;
+border-left: 1px solid gray;
+
+/* Propriétés séparées */
+border-width: 2px;
+border-style: solid; /* solid, dashed, dotted, double */
+border-color: red;
+
+/* Coins arrondis */
+border-radius: 10px;
+border-radius: 50%; /* Cercle */</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📐 Width et Height</h3>
+                    <div class="code-block">
+<pre>width: 300px;
+height: 200px;
+max-width: 100%;
+min-height: 400px;
+
+/* Box-sizing */
+box-sizing: border-box; /* Inclut padding et border dans width/height */</pre>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">💡 Exemple complet :</div>
+                    <div class="code-block">
+<pre>.box {
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    border: 3px solid #3498db;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-sizing: border-box;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <div class="tips-title">✅ Conseils Box Model :</div>
+                    <ul>
+                        <li>Utilisez box-sizing: border-box pour simplifier les calculs</li>
+                        <li>Margin peut être négatif, pas padding</li>
+                        <li>Les marges verticales se chevauchent (margin collapse)</li>
+                        <li>Utilisez margin: 0 auto pour centrer horizontalement</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices Pratiques</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez une div avec 300px de largeur, 20px de padding, une bordure rouge de 2px et centrée.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Créez une carte avec coins arrondis, bordure, padding et ombre.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 3 :</div>
+                        <p>Créez 3 boîtes côte à côte avec des marges entre elles.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(3)">← Précédent</button>
+                <button class="next-button nav-button" onclick="showLesson(5)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 5 : Positionnement -->
+        <div id="lesson5" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 5 : Positionnement</h2>
+                    <p class="lesson-intro">Maîtrisez les différentes méthodes de positionnement pour placer vos éléments exactement où vous le souhaitez.</p>
+                </div>
+
+                <div class="section">
+                    <h3>📍 Position: Static (par défaut)</h3>
+                    <p>Position normale dans le flux du document.</p>
+                    <div class="code-block">
+<pre>position: static; /* Valeur par défaut */</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📌 Position: Relative</h3>
+                    <p>Positionné par rapport à sa position normale.</p>
+                    <div class="code-block">
+<pre>.element {
+    position: relative;
+    top: 20px;    /* Décalage depuis le haut */
+    left: 30px;   /* Décalage depuis la gauche */
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🎯 Position: Absolute</h3>
+                    <p>Positionné par rapport au parent positionné le plus proche.</p>
+                    <div class="code-block">
+<pre>.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 0;
+    right: 0;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📎 Position: Fixed</h3>
+                    <p>Fixé par rapport à la fenêtre du navigateur.</p>
+                    <div class="code-block">
+<pre>.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🔝 Position: Sticky</h3>
+                    <p>Combine relative et fixed selon le scroll.</p>
+                    <div class="code-block">
+<pre>.header {
+    position: sticky;
+    top: 0;
+    background: white;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🎚️ Z-index (superposition)</h3>
+                    <div class="code-block">
+<pre>.element1 {
+    position: relative;
+    z-index: 1;
+}
+
+.element2 {
+    position: relative;
+    z-index: 10; /* Au-dessus de element1 */
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🎪 Display</h3>
+                    <div class="code-block">
+<pre>display: block;        /* Prend toute la largeur */
+display: inline;       /* Sur la même ligne */
+display: inline-block; /* Inline avec width/height */
+display: none;         /* Caché */
+display: flex;         /* Flexbox */
+display: grid;         /* Grid */</pre>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">💡 Exemple : Badge en absolute</div>
+                    <div class="code-block">
+<pre>.card {
+    position: relative;
+    width: 300px;
+    height: 200px;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-title">⚠️ Attention :</div>
+                    <p>Un élément en position absolute est retiré du flux normal. Les autres éléments agissent comme s'il n'existait pas.</p>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices Pratiques</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez une navbar fixée en haut de la page.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Créez une carte avec un badge "Nouveau" en haut à droite en position absolute.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 3 :</div>
+                        <p>Créez un bouton "Retour en haut" fixé en bas à droite de l'écran.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(4)">← Précédent</button>
+                <button class="next-button nav-button" onclick="showLesson(6)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 6 : Flexbox -->
+        <div id="lesson6" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 6 : Flexbox</h2>
+                    <p class="lesson-intro">Découvrez Flexbox, l'outil moderne pour créer des mises en page flexibles et responsives facilement.</p>
+                </div>
+
+                <div class="section">
+                    <h3>🎯 Qu'est-ce que Flexbox ?</h3>
+                    <p>Flexbox (Flexible Box Layout) est un modèle de mise en page qui permet d'organiser facilement des éléments dans un conteneur, même quand leur taille est inconnue ou dynamique.</p>
+                </div>
+
+                <div class="section">
+                    <h3>📦 Activer Flexbox</h3>
+                    <div class="code-block">
+<pre>.container {
+    display: flex;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>➡️ Direction des éléments (flex-direction)</h3>
+                    <div class="code-block">
+<pre>flex-direction: row;            /* Horizontal (défaut) */
+flex-direction: row-reverse;    /* Horizontal inversé */
+flex-direction: column;         /* Vertical */
+flex-direction: column-reverse; /* Vertical inversé */</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📐 Alignement horizontal (justify-content)</h3>
+                    <div class="code-block">
+<pre>justify-content: flex-start;    /* À gauche (défaut) */
+justify-content: flex-end;      /* À droite */
+justify-content: center;        /* Centré */
+justify-content: space-between; /* Espace entre */
+justify-content: space-around;  /* Espace autour */
+justify-content: space-evenly;  /* Espace égal */</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📏 Alignement vertical (align-items)</h3>
+                    <div class="code-block">
+<pre>align-items: stretch;     /* Étire (défaut) */
+align-items: flex-start;  /* En haut */
+align-items: flex-end;    /* En bas */
+align-items: center;      /* Centré */
+align-items: baseline;    /* Ligne de base */</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🔄 Retour à la ligne (flex-wrap)</h3>
+                    <div class="code-block">
+<pre>flex-wrap: nowrap;       /* Pas de retour (défaut) */
+flex-wrap: wrap;         /* Retour à la ligne */
+flex-wrap: wrap-reverse; /* Retour inversé */</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🎛️ Propriétés des éléments enfants</h3>
+                    <div class="code-block">
+<pre>/* Flexibilité */
+flex-grow: 1;    /* Grandit pour remplir l'espace */
+flex-shrink: 1;  /* Peut rétrécir si nécessaire */
+flex-basis: 200px; /* Taille de base */
+
+/* Raccourci */
+flex: 1; /* équivalent à flex-grow: 1 */
+
+/* Ordre */
+order: 2; /* Change l'ordre d'affichage */
+
+/* Alignement individuel */
+align-self: center;</pre>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">💡 Exemple : Centrer parfaitement</div>
+                    <div class="code-block">
+<pre>.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">💡 Exemple : Navbar responsive</div>
+                    <div class="code-block">
+<pre>.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #333;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">💡 Exemple : Grille de cartes</div>
+                    <div class="code-block">
+<pre>.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 300px; /* Grandit, rétrécit, base 300px */
+    min-width: 250px;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <div class="tips-title">✅ Astuces Flexbox :</div>
+                    <ul>
+                        <li>Utilisez gap pour espacer les éléments facilement</li>
+                        <li>flex: 1 fait grandir un élément pour remplir l'espace</li>
+                        <li>Combinez justify-content et align-items pour centrer</li>
+                        <li>flex-wrap: wrap pour rendre responsive</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices Pratiques</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez une navbar avec logo à gauche et menu à droite en utilisant Flexbox.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Créez une grille de 3 cartes côte à côte qui passent en colonne sur mobile (flex-wrap).</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 3 :</div>
+                        <p>Créez un footer avec 3 colonnes espacées uniformément (space-around ou space-between).</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 4 :</div>
+                        <p>Centrez parfaitement une div avec du texte au milieu de la page (verticalement et horizontalement).</p>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <div class="tips-title">🎉 Félicitations !</div>
+                    <p>Vous avez terminé toutes les leçons du tutoriel CSS ! Vous maîtrisez maintenant les bases pour styliser vos pages web. Continuez à pratiquer et explorez CSS Grid, les animations et les media queries pour devenir expert !</p>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(5)">← Précédent</button>
+                <button class="next-button nav-button" onclick="goHome()">Retour à l'accueil 🏠</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLesson(lessonNum) {
+            // Masquer la vue d'accueil
+            document.getElementById('homeView').style.display = 'none';
+            
+            // Masquer toutes les leçons
+            const lessons = document.querySelectorAll('.lesson-view');
+            lessons.forEach(lesson => {
+                lesson.style.display = 'none';
+            });
+            
+            // Afficher la leçon sélectionnée
+            document.getElementById('lesson' + lessonNum).style.display = 'block';
+            
+            // Afficher le bouton retour
+            document.getElementById('backBtn').style.display = 'block';
+            
+            // Scroll en haut de la page
+            window.scrollTo(0, 0);
+        }
+
+        function goHome() {
+            // Masquer toutes les leçons
+            const lessons = document.querySelectorAll('.lesson-view');
+            lessons.forEach(lesson => {
+                lesson.style.display = 'none';
+            });
+            
+            // Afficher la vue d'accueil
+            document.getElementById('homeView').style.display = 'block';
+            
+            // Masquer le bouton retour
+            document.getElementById('backBtn').style.display = 'none';
+            
+            // Scroll en haut de la page
+            window.scrollTo(0, 0);
+        }
+
+        // Animation au survol des cartes
+        document.querySelectorAll('.lesson-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.background = '#353552';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.background = '#2d2d44';
+            });
+        });
+    </script>
+</body>
+</html>

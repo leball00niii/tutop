@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel HTML - Leçons Complètes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            background: #2d2d44;
+            padding: 15px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-title {
+            color: #3b9dff;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: rgba(59, 157, 255, 0.2);
+            color: #3b9dff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #3b9dff;
+            color: white;
+        }
+
+        .home-view {
+            display: block;
+        }
+
+        header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #3b9dff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #b0b0b0;
+            font-size: 1.1em;
+        }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .lesson-card {
+            background: #2d2d44;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 157, 255, 0.3);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #3b9dff 0%, #2980ff 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .lesson-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .lesson-title {
+            font-size: 1.3em;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .lesson-description {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .start-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #3b9dff 0%, #2980ff 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .start-button:hover {
+            background: linear-gradient(135deg, #2980ff 0%, #1a5fcc 100%);
+        }
+
+        .lesson-view {
+            display: none;
+        }
+
+        .lesson-content {
+            background: #2d2d44;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .lesson-header {
+            border-bottom: 3px solid #3b9dff;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .lesson-header h2 {
+            color: #3b9dff;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .lesson-intro {
+            color: #b0b0b0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin: 30px 0;
+        }
+
+        .section h3 {
+            color: #3b9dff;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid #3b9dff;
+        }
+
+        .section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #d0d0d0;
+        }
+
+        .code-block {
+            background: #1a1a2e;
+            border: 1px solid #3b9dff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            color: #4caf50;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: rgba(59, 157, 255, 0.1);
+            border-left: 4px solid #3b9dff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .example-title {
+            color: #3b9dff;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .tips-box {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .tips-title {
+            color: #4caf50;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .warning-box {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-title {
+            color: #ff9800;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .exercise {
+            background: #353552;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .exercise-header {
+            color: #3b9dff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .exercise-task {
+            background: #2d2d44;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .task-number {
+            color: #3b9dff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .prev-button {
+            background: rgba(59, 157, 255, 0.2);
+            color: #3b9dff;
+        }
+
+        .prev-button:hover {
+            background: rgba(59, 157, 255, 0.3);
+        }
+
+        .next-button {
+            background: linear-gradient(135deg, #3b9dff 0%, #2980ff 100%);
+            color: white;
+        }
+
+        .next-button:hover {
+            background: linear-gradient(135deg, #2980ff 0%, #1a5fcc 100%);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        ul li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        ul li:before {
+            content: "→";
+            color: #3b9dff;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .lesson-content {
+                padding: 20px;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="nav-title">📚 Tutoriel HTML</div>
+            <button class="back-btn" onclick="goHome()" id="backBtn" style="display: none;">← Retour aux leçons</button>
+        </div>
+
+        <!-- Vue Accueil -->
+        <div id="homeView" class="home-view">
+            <header>
+                <h1>Tutoriel HTML</h1>
+                <p class="subtitle">Maîtrisez les fondamentaux du développement web</p>
+            </header>
+
+            <div class="lessons-grid">
+                <div class="lesson-card" onclick="showLesson(1)">
+                    <div class="card-header">
+                        <div class="lesson-number">1</div>
+                        <div class="lesson-title">Introduction au HTML</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Découvrez les bases du HTML et comprenez la structure d'une page web.
+                        </p>
+                        <button class="start-button" onclick="showLesson(1); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(2)">
+                    <div class="card-header">
+                        <div class="lesson-number">2</div>
+                        <div class="lesson-title">Texte & Titres</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Apprenez à structurer le contenu textuel avec les balises de titres et de paragraphes.
+                        </p>
+                        <button class="start-button" onclick="showLesson(2); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(3)">
+                    <div class="card-header">
+                        <div class="lesson-number">3</div>
+                        <div class="lesson-title">Liens & Images</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Créez des liens hypertextes et intégrez des images dans vos pages web.
+                        </p>
+                        <button class="start-button" onclick="showLesson(3); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(4)">
+                    <div class="card-header">
+                        <div class="lesson-number">4</div>
+                        <div class="lesson-title">Listes</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Organisez vos informations avec les listes ordonnées et non ordonnées.
+                        </p>
+                        <button class="start-button" onclick="showLesson(4); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(5)">
+                    <div class="card-header">
+                        <div class="lesson-number">5</div>
+                        <div class="lesson-title">Tableaux</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Créez des tableaux pour présenter des données de manière structurée.
+                        </p>
+                        <button class="start-button" onclick="showLesson(5); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+
+                <div class="lesson-card" onclick="showLesson(6)">
+                    <div class="card-header">
+                        <div class="lesson-number">6</div>
+                        <div class="lesson-title">Formulaires</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="lesson-description">
+                            Créez des formulaires interactifs pour collecter des informations utilisateur.
+                        </p>
+                        <button class="start-button" onclick="showLesson(6); event.stopPropagation();">Commencer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leçon 1 -->
+        <div id="lesson1" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 1 : Introduction au HTML</h2>
+                    <p class="lesson-intro">Bienvenue dans le monde du développement web ! Dans cette première leçon, vous allez découvrir ce qu'est le HTML et comment créer votre première page web.</p>
+                </div>
+
+                <div class="section">
+                    <h3>📖 Qu'est-ce que le HTML ?</h3>
+                    <p>HTML signifie <strong>HyperText Markup Language</strong> (Langage de Balisage HyperTexte). C'est le langage standard utilisé pour créer des pages web. Le HTML n'est pas un langage de programmation, c'est un langage de balisage qui permet de structurer le contenu d'une page web.</p>
+                    <p>Imaginez le HTML comme le squelette d'une maison : il définit la structure de base avant d'ajouter la décoration (CSS) et l'électricité (JavaScript).</p>
+                </div>
+
+                <div class="section">
+                    <h3>🏗️ Structure de base d'un document HTML</h3>
+                    <p>Chaque page HTML commence par une structure de base. Voici le modèle minimal :</p>
+                    
+                    <div class="code-block">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Ma première page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Bonjour le monde !&lt;/h1&gt;
+    &lt;p&gt;Ceci est ma première page HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Explication :</div>
+                        <ul>
+                            <li><strong>&lt;!DOCTYPE html&gt;</strong> : Version HTML5</li>
+                            <li><strong>&lt;html&gt;</strong> : Élément racine</li>
+                            <li><strong>&lt;head&gt;</strong> : Métadonnées</li>
+                            <li><strong>&lt;title&gt;</strong> : Titre de l'onglet</li>
+                            <li><strong>&lt;body&gt;</strong> : Contenu visible</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <div class="tips-title">✅ Bonnes pratiques :</div>
+                    <ul>
+                        <li>Toujours fermer vos balises</li>
+                        <li>Utiliser l'indentation</li>
+                        <li>Écrire en minuscules</li>
+                        <li>Ajouter des commentaires</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices Pratiques</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez une page HTML avec un titre "Ma page d'accueil".</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Ajoutez un commentaire HTML dans votre page.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 3 :</div>
+                        <p>Créez une page avec "Bienvenue" en h1 et un paragraphe.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="goHome()">← Retour</button>
+                <button class="next-button nav-button" onclick="showLesson(2)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 2 -->
+        <div id="lesson2" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 2 : Texte & Titres</h2>
+                    <p class="lesson-intro">Apprenez à structurer et formater le texte avec les balises HTML.</p>
+                </div>
+
+                <div class="section">
+                    <h3>📑 Les balises de titres</h3>
+                    <p>HTML propose 6 niveaux de titres :</p>
+                    
+                    <div class="code-block">
+<pre>&lt;h1&gt;Titre principal&lt;/h1&gt;
+&lt;h2&gt;Sous-titre niveau 2&lt;/h2&gt;
+&lt;h3&gt;Sous-titre niveau 3&lt;/h3&gt;
+&lt;h4&gt;Sous-titre niveau 4&lt;/h4&gt;
+&lt;h5&gt;Sous-titre niveau 5&lt;/h5&gt;
+&lt;h6&gt;Sous-titre niveau 6&lt;/h6&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>✏️ Mise en forme</h3>
+                    <div class="code-block">
+<pre>&lt;strong&gt;Gras&lt;/strong&gt;
+&lt;em&gt;Italique&lt;/em&gt;
+&lt;mark&gt;Surligné&lt;/mark&gt;
+&lt;del&gt;Barré&lt;/del&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez une page CV avec h1 et h2.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Utilisez strong et em dans un paragraphe.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(1)">← Précédent</button>
+                <button class="next-button nav-button" onclick="showLesson(3)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 3 -->
+        <div id="lesson3" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 3 : Liens & Images</h2>
+                    <p class="lesson-intro">Ajoutez de l'interactivité avec des liens et des images.</p>
+                </div>
+
+                <div class="section">
+                    <h3>🔗 Les liens</h3>
+                    <div class="code-block">
+<pre>&lt;a href="https://google.com"&gt;Google&lt;/a&gt;
+&lt;a href="page.html"&gt;Autre page&lt;/a&gt;
+&lt;a href="mailto:email@test.com"&gt;Email&lt;/a&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🖼️ Les images</h3>
+                    <div class="code-block">
+<pre>&lt;img src="photo.jpg" alt="Description"&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez 3 liens vers des sites différents.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Ajoutez une image avec alt et title.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(2)">← Précédent</button>
+                <button class="next-button nav-button" onclick="showLesson(4)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 4 -->
+        <div id="lesson4" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 4 : Les Listes</h2>
+                    <p class="lesson-intro">Organisez vos informations avec des listes.</p>
+                </div>
+
+                <div class="section">
+                    <h3>📋 Liste non ordonnée</h3>
+                    <div class="code-block">
+<pre>&lt;ul&gt;
+    &lt;li&gt;Élément 1&lt;/li&gt;
+    &lt;li&gt;Élément 2&lt;/li&gt;
+    &lt;li&gt;Élément 3&lt;/li&gt;
+&lt;/ul&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🔢 Liste ordonnée</h3>
+                    <div class="code-block">
+<pre>&lt;ol&gt;
+    &lt;li&gt;Premier&lt;/li&gt;
+    &lt;li&gt;Deuxième&lt;/li&gt;
+    &lt;li&gt;Troisième&lt;/li&gt;
+&lt;/ol&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🎯 Listes imbriquées</h3>
+                    <div class="code-block">
+<pre>&lt;ul&gt;
+    &lt;li&gt;Fruits
+        &lt;ul&gt;
+            &lt;li&gt;Pomme&lt;/li&gt;
+            &lt;li&gt;Banane&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Légumes&lt;/li&gt;
+&lt;/ul&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez une liste de courses (ul).</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Créez un classement avec ol.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 3 :</div>
+                        <p>Créez une liste imbriquée (menu de restaurant).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(3)">← Précédent</button>
+                <button class="next-button nav-button" onclick="showLesson(5)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 5 -->
+        <div id="lesson5" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 5 : Les Tableaux</h2>
+                    <p class="lesson-intro">Présentez des données structurées avec des tableaux.</p>
+                </div>
+
+                <div class="section">
+                    <h3>📊 Structure d'un tableau</h3>
+                    <div class="code-block">
+<pre>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Nom&lt;/th&gt;
+            &lt;th&gt;Âge&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Alice&lt;/td&gt;
+            &lt;td&gt;25&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Bob&lt;/td&gt;
+            &lt;td&gt;30&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">💡 Éléments :</div>
+                        <ul>
+                            <li><strong>&lt;table&gt;</strong> : Le tableau</li>
+                            <li><strong>&lt;thead&gt;</strong> : En-tête</li>
+                            <li><strong>&lt;tbody&gt;</strong> : Corps</li>
+                            <li><strong>&lt;tr&gt;</strong> : Ligne</li>
+                            <li><strong>&lt;th&gt;</strong> : Cellule d'en-tête</li>
+                            <li><strong>&lt;td&gt;</strong> : Cellule de données</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🔗 Fusion de cellules</h3>
+                    <div class="code-block">
+<pre>&lt;!-- Fusion horizontale --&gt;
+&lt;td colspan="2"&gt;Fusionné&lt;/td&gt;
+
+&lt;!-- Fusion verticale --&gt;
+&lt;td rowspan="2"&gt;Fusionné&lt;/td&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez un tableau de notes (Nom, Matière, Note).</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Créez un emploi du temps avec colspan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(4)">← Précédent</button>
+                <button class="next-button nav-button" onclick="showLesson(6)">Suivant →</button>
+            </div>
+        </div>
+
+        <!-- Leçon 6 -->
+        <div id="lesson6" class="lesson-view">
+            <div class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Leçon 6 : Les Formulaires</h2>
+                    <p class="lesson-intro">Collectez des données avec des formulaires interactifs.</p>
+                </div>
+
+                <div class="section">
+                    <h3>📝 Structure d'un formulaire</h3>
+                    <div class="code-block">
+<pre>&lt;form action="/submit" method="post"&gt;
+    &lt;label for="nom"&gt;Nom :&lt;/label&gt;
+    &lt;input type="text" id="nom" name="nom"&gt;
+    
+    &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🎛️ Types de champs</h3>
+                    <div class="code-block">
+<pre>&lt;!-- Texte simple --&gt;
+&lt;input type="text" placeholder="Votre nom"&gt;
+
+&lt;!-- Email --&gt;
+&lt;input type="email" placeholder="email@exemple.com"&gt;
+
+&lt;!-- Mot de passe --&gt;
+&lt;input type="password"&gt;
+
+&lt;!-- Nombre --&gt;
+&lt;input type="number" min="0" max="100"&gt;
+
+&lt;!-- Date --&gt;
+&lt;input type="date"&gt;
+
+&lt;!-- Case à cocher --&gt;
+&lt;input type="checkbox" id="accept"&gt;
+&lt;label for="accept"&gt;J'accepte&lt;/label&gt;
+
+&lt;!-- Bouton radio --&gt;
+&lt;input type="radio" name="genre" value="homme"&gt; Homme
+&lt;input type="radio" name="genre" value="femme"&gt; Femme
+
+&lt;!-- Zone de texte --&gt;
+&lt;textarea rows="4" cols="50"&gt;&lt;/textarea&gt;
+
+&lt;!-- Liste déroulante --&gt;
+&lt;select name="pays"&gt;
+    &lt;option value="fr"&gt;France&lt;/option&gt;
+    &lt;option value="be"&gt;Belgique&lt;/option&gt;
+    &lt;option value="ch"&gt;Suisse&lt;/option&gt;
+&lt;/select&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>✅ Validation</h3>
+                    <div class="code-block">
+<pre>&lt;input type="text" required&gt;
+&lt;input type="email" required&gt;
+&lt;input type="text" minlength="3" maxlength="20"&gt;
+&lt;input type="number" min="18" max="99"&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">💡 Exemple complet :</div>
+                    <div class="code-block">
+<pre>&lt;form&gt;
+    &lt;label for="nom"&gt;Nom :&lt;/label&gt;
+    &lt;input type="text" id="nom" required&gt;
+    
+    &lt;label for="email"&gt;Email :&lt;/label&gt;
+    &lt;input type="email" id="email" required&gt;
+    
+    &lt;label for="message"&gt;Message :&lt;/label&gt;
+    &lt;textarea id="message" rows="5"&gt;&lt;/textarea&gt;
+    
+    &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;</pre>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <div class="tips-title">✅ Bonnes pratiques :</div>
+                    <ul>
+                        <li>Toujours associer un label à chaque input</li>
+                        <li>Utiliser l'attribut "required" pour les champs obligatoires</li>
+                        <li>Choisir le bon type d'input pour chaque donnée</li>
+                        <li>Ajouter des placeholders pour guider l'utilisateur</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-header">📝 Exercices Pratiques</div>
+                    
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 1 :</div>
+                        <p>Créez un formulaire de contact avec : nom, email, sujet et message.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 2 :</div>
+                        <p>Créez un formulaire d'inscription avec : prénom, nom, email, mot de passe, date de naissance, et cases à cocher pour accepter les conditions.</p>
+                    </div>
+
+                    <div class="exercise-task">
+                        <div class="task-number">Exercice 3 :</div>
+                        <p>Créez un sondage avec des boutons radio pour choisir une réponse et une liste déroulante pour sélectionner un pays.</p>
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <div class="tips-title">🎉 Félicitations !</div>
+                    <p>Vous avez terminé toutes les leçons du tutoriel HTML ! Vous maîtrisez maintenant les bases pour créer des pages web. Continuez à pratiquer et explorez CSS pour styliser vos pages, puis JavaScript pour les rendre interactives !</p>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="prev-button nav-button" onclick="showLesson(5)">← Précédent</button>
+                <button class="next-button nav-button" onclick="goHome()">Retour à l'accueil 🏠</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLesson(lessonNum) {
+            // Masquer la vue d'accueil
+            document.getElementById('homeView').style.display = 'none';
+            
+            // Masquer toutes les leçons
+            const lessons = document.querySelectorAll('.lesson-view');
+            lessons.forEach(lesson => {
+                lesson.style.display = 'none';
+            });
+            
+            // Afficher la leçon sélectionnée
+            document.getElementById('lesson' + lessonNum).style.display = 'block';
+            
+            // Afficher le bouton retour
+            document.getElementById('backBtn').style.display = 'block';
+            
+            // Scroll en haut de la page
+            window.scrollTo(0, 0);
+        }
+
+        function goHome() {
+            // Masquer toutes les leçons
+            const lessons = document.querySelectorAll('.lesson-view');
+            lessons.forEach(lesson => {
+                lesson.style.display = 'none';
+            });
+            
+            // Afficher la vue d'accueil
+            document.getElementById('homeView').style.display = 'block';
+            
+            // Masquer le bouton retour
+            document.getElementById('backBtn').style.display = 'none';
+            
+            // Scroll en haut de la page
+            window.scrollTo(0, 0);
+        }
+
+        // Animation au survol des cartes
+        document.querySelectorAll('.lesson-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.background = '#353552';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.background = '#2d2d44';
+            });
+        });
+    </script>
+</body>
+</html> 
