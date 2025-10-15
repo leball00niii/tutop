@@ -34,6 +34,16 @@
             align-items: center;
         }
 
+         nav a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 8px 16px;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+         position: relative;
+        }
+
         .nav-title {
             color: #3b9dff;
             font-size: 1.5em;
@@ -345,7 +355,7 @@
     <div class="container">
         <div class="nav">
             <div class="nav-title">📚 Tutoriel HTML</div>
-            <button class="back-btn" onclick="goHome()" id="backBtn" style="display: none;">← Retour aux leçons</button>
+            <nav><a href="../index.html">acceuil</a></nav> 
         </div>
 
         <!-- Vue Accueil -->
