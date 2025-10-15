@@ -33,6 +33,16 @@
             justify-content: space-between;
             align-items: center;
         }
+        
+         nav a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 8px 16px;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+         position: relative;
+        }
 
         .nav-title {
             color: #ff6b6b;
@@ -353,7 +363,7 @@
     <div class="container">
         <div class="nav">
             <div class="nav-title">🎨 Tutoriel CSS</div>
-            <button class="back-btn" onclick="goHome()" id="backBtn" style="display: none;">← Retour aux leçons</button>
+            <nav><a href="../index.html">acceuil</a></nav> 
         </div>
 
         <!-- Vue Accueil -->
